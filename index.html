@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CronMaker — Cron Expression Generator | Build Cron Schedules Visually</title>
+    <meta name="description" content="The cleanest cron expression generator on the internet. Build, decode, and preview cron schedules visually. Free crontab guru alternative.">
+    <meta name="keywords" content="cron expression generator, crontab guru alternative, cron schedule builder, cron syntax, crontab maker">
+    <meta property="og:title" content="CronMaker — Cron Expression Generator">
+    <meta property="og:description" content="Build, decode, and preview cron schedules visually. The cleanest cron tool on the internet.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mack-moneymaker.github.io/cronmaker/">
+    <link rel="canonical" href="https://mack-moneymaker.github.io/cronmaker/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CronMaker",
+      "description": "Visual cron expression generator and decoder. Build cron schedules with dropdowns, preview next executions, and copy expressions.",
+      "url": "https://mack-moneymaker.github.io/cronmaker/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-row">
+            <div class="logo">⏰ <span>CronMaker</span></div>
+            <div class="header-actions">
+                <a href="https://hookdebug.com" class="hookdebug-link" target="_blank" rel="noopener" title="Debug webhooks triggered by your cron jobs">🪝 HookDebug</a>
+                <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+        <p class="tagline">The cleanest cron expression generator on the internet</p>
+    </header>
+
+    <main>
+        <!-- Expression Display -->
+        <section class="expression-section">
+            <div class="expression-display" id="expression-display">
+                <input type="text" id="cron-input" value="* * * * *" spellcheck="false" autocomplete="off" aria-label="Cron expression">
+            </div>
+            <div class="expression-actions">
+                <button id="copy-btn" class="btn btn-primary" aria-label="Copy to clipboard">📋 Copy</button>
+                <span id="copy-feedback" class="copy-feedback"></span>
+            </div>
+            <p class="human-readable" id="human-readable">Every minute</p>
+        </section>
+
+        <!-- Mode Toggle -->
+        <section class="mode-section">
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="5">5-field (standard)</button>
+                <button class="mode-btn" data-mode="6">6-field (with seconds)</button>
+            </div>
+        </section>
+
+        <!-- Presets -->
+        <section class="presets-section">
+            <h2>Common Presets</h2>
+            <div class="presets-grid" id="presets-grid"></div>
+        </section>
+
+        <!-- Builder -->
+        <section class="builder-section">
+            <h2>Visual Builder</h2>
+            <div class="field-grid" id="field-grid"></div>
+        </section>
+
+        <!-- Next Executions -->
+        <section class="executions-section">
+            <h2>Next 10 Executions</h2>
+            <ul id="executions-list" class="executions-list"></ul>
+        </section>
+
+        <!-- SEO Content -->
+        <section class="seo-section">
+            <h2>Cron Expression Cheat Sheet</h2>
+            <div class="cheat-sheet">
+                <table>
+                    <thead><tr><th>Field</th><th>Values</th><th>Special</th></tr></thead>
+                    <tbody>
+                        <tr><td>Minute</td><td>0–59</td><td>* , - /</td></tr>
+                        <tr><td>Hour</td><td>0–23</td><td>* , - /</td></tr>
+                        <tr><td>Day of Month</td><td>1–31</td><td>* , - /</td></tr>
+                        <tr><td>Month</td><td>1–12</td><td>* , - /</td></tr>
+                        <tr><td>Day of Week</td><td>0–6 (Sun=0)</td><td>* , - /</td></tr>
+                    </tbody>
+                </table>
+                <div class="examples">
+                    <h3>Examples</h3>
+                    <code>*/5 * * * *</code> → Every 5 minutes<br>
+                    <code>0 9 * * 1</code> → Every Monday at 9 AM<br>
+                    <code>0 0 1 * *</code> → First of every month at midnight<br>
+                    <code>30 */2 * * *</code> → Every 2 hours at :30
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built by <a href="https://github.com/mack-moneymaker" target="_blank" rel="noopener">Mack</a> · Use cron jobs to trigger webhooks? Try <a href="https://hookdebug.com" target="_blank" rel="noopener">HookDebug</a> for instant webhook debugging.</p>
+    </footer>
+
+    <script src="cron.js"></script>
+</body>
+</html>
